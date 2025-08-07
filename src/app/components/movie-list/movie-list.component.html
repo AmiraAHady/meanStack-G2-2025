@@ -1,0 +1,36 @@
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+  <input type="text" class="form-control" [(ngModel)]="searchValue" />
+  <!-- <h2>{{searchValue}}</h2> -->
+  @for (movie of MovList; track $index) {
+  <div class="col">
+    <div class="card h-100 position-relative">
+      @if (movie.vote_average >=7) {
+      <span
+        class="badge bg-warning text-dark position-absolute top-0 end-0 m-2 fs-6 fw-bold"
+        >Top Rated</span
+      >
+      }@else {
+        <span
+        class="badge bg-info text-dark position-absolute top-0 end-0 m-2 fs-6 fw-bold"
+        >{{movie.vote_average.toFixed(1)}}</span
+      >
+      }
+      <img
+        src="{{ 'https://image.tmdb.org/t/p/w500' + movie.poster_path }}"
+        class="card-img-top"
+        alt="iPhone 9"
+      />
+      <!-- <img [src]="myMovie.poster_path" class="card-img-top" alt="iPhone 9"> -->
+      <div class="card-body">
+        <h5 class="card-title">{{ movie.title }}</h5>
+        <button class="btn btn-success" [disabled]="!movie.video">Watch</button>
+        <button class="btn btn-warning mx-1" (click)="addRate(5)">
+          Rate Movie
+        </button>
+        <!-- <button class="btn btn-success" disabled={{!myMovie.video}}>Watch</button> -->
+        <!-- <p class="card-text">An apple mobile which is nothing like apple. Features a 4.7-inch Retina HD display and A13 Bionic chip.</p> -->
+      </div>
+    </div>
+  </div>
+  }
+</div>

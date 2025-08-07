@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  // component Directive
   selector: 'app-products',
   imports: [],
   templateUrl: './products.component.html',
