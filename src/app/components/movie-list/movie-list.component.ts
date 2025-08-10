@@ -1,9 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MovieRatingComponent } from '../movie-rating/movie-rating.component';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [FormsModule],
+  imports: [FormsModule,DatePipe,MovieRatingComponent],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css',
 })
@@ -357,5 +359,9 @@ export class MovieListComponent {
   addRate(newRate: number) {
     this.userRate = newRate;
     alert(`User Rate this movie with :${this.userRate}`);
+  }
+
+  reciveChildData(message:string){
+    console.log(`i reciver You message:${message}`);
   }
 }

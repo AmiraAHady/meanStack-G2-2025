@@ -1,10 +1,10 @@
-import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
+import { CurrencyPipe, LowerCasePipe, NgClass, NgStyle, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   // component Directive
   selector: 'app-products',
-  imports: [NgClass,NgStyle,NgFor,NgIf],
+  imports: [NgClass,NgStyle,UpperCasePipe,LowerCasePipe,CurrencyPipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })

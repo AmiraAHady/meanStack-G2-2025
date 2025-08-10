@@ -4,7 +4,12 @@
   @for (movie of MovList; track $index) {
   <div class="col">
     <div class="card h-100 position-relative">
-      @if (movie.vote_average >=7) {
+      <app-movie-rating (myCasting)="reciveChildData($event)"
+        [myParentRating]="movie.vote_average"
+      ></app-movie-rating>
+   
+      <!-- conditional Rendering -->
+      <!-- @if (movie.vote_average >=7) {
       <span
         class="badge bg-warning text-dark position-absolute top-0 end-0 m-2 fs-6 fw-bold"
         >Top Rated</span
@@ -14,25 +19,20 @@
         class="badge bg-info text-dark position-absolute top-0 end-0 m-2 fs-6 fw-bold"
         >{{movie.vote_average.toFixed(1)}}</span
       >
-      }
+      } -->
       <img
         src="{{ 'https://image.tmdb.org/t/p/w500' + movie.poster_path }}"
         class="card-img-top"
         alt="iPhone 9"
       />
-      <!-- <img [src]="myMovie.poster_path" class="card-img-top" alt="iPhone 9"> -->
       <div class="card-body">
         <h5 class="card-title">{{ movie.title }}</h5>
-        <button class="btn btn-success" [disabled]="!movie.video">Watch</button>
-        <button class="btn btn-warning mx-1" (click)="addRate(5)">
-          Rate Movie
-        </button>
-        <!-- <button class="btn btn-success" disabled={{!myMovie.video}}>Watch</button> -->
-        <!-- <p class="card-text">An apple mobile which is nothing like apple. Features a 4.7-inch Retina HD display and A13 Bionic chip.</p> -->
+        <h4>Release Date:{{ movie.release_date | date : "fullDate" }}</h4>
+        <!-- child -->
       </div>
     </div>
   </div>
   }@empty {
-    <h1>No Movies Founded!</h1>
+  <h1>No Movies Founded!</h1>
   }
 </div>

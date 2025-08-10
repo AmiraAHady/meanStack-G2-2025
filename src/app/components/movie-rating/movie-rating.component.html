@@ -1,0 +1,13 @@
+<div (click)="prodcastToParent()">
+  @if (myParentRating >=7) {
+  <span
+    class="badge bg-warning text-dark position-absolute top-0 end-0 m-2 fs-6 fw-bold"
+    >Top Rated</span
+  >
+  }@else {
+  <span
+    class="badge bg-info text-dark position-absolute top-0 end-0 m-2 fs-6 fw-bold"
+    >{{ myParentRating.toFixed(1) }}</span
+  >
+  }
+</div>
