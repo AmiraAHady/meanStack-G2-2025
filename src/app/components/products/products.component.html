@@ -1,17 +1,7 @@
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
-  @for (item of productList; track $index) {
+  <!-- @for (item of productList; track $index) {
   <div class="col">
     <div class="card h-100 position-relative">
-      <!-- <span
-        class="badge position-absolute top-0 end-0 m-2 fs-6 fw-bold"
-        [ngStyle]="
-          item.discountPercentage > 10
-            ? { 'background-color': 'red', color: 'black' }
-            : { 'background-color': 'green', color: 'white' }
-        "
-        >{{ item.discountPercentage }}</span
-      > -->
-
       @if (item.discountPercentage > 10) {
       <span
         class="badge position-absolute top-0 end-0 m-2 fs-6 fw-bold"
@@ -35,5 +25,30 @@
       </div>
     </div>
   </div>
-  }
+  } -->
+
+  <div class="col" *ngFor="let item of productList">
+    <div class="card h-100 position-relative">
+      <span
+        *ngIf="item.discountPercentage > 10"
+        class="badge position-absolute top-0 end-0 m-2 fs-6 fw-bold"
+        [ngStyle]="{ 'background-color': 'gold', color: 'black' }"
+        >Hot Offer</span
+      >
+
+      <img [src]="item.thumbnail" class="card-img-top" alt="{{ item.title }}" />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.title }}</h5>
+        <h3>
+          <span
+            class="badge"
+            [ngClass]="item.category == 'beauty' ? 'text-bg-danger' : ''"
+            >{{ item.category }}</span
+          >
+        </h3>
+
+        <p class="card-text" [ngClass]="'mycls'">{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
 </div>

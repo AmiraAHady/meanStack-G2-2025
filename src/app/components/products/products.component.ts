@@ -1,10 +1,10 @@
-import { NgClass, NgStyle } from '@angular/common';
+import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   // component Directive
   selector: 'app-products',
-  imports: [NgClass,NgStyle],
+  imports: [NgClass,NgStyle,NgFor,NgIf],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })
