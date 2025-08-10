@@ -1,61 +1,39 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+  @for (item of productList; track $index) {
   <div class="col">
-    <div class="card h-100">
-      <img src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp" class="card-img-top" alt="iPhone 9">
-      <div class="card-body">
-        <h5 class="card-title">iPhone 9</h5>
-        <p class="card-text">An apple mobile which is nothing like apple. Features a 4.7-inch Retina HD display and A13 Bionic chip.</p>
-      </div>
-    </div>
-  </div>
+    <div class="card h-100 position-relative">
+      <!-- <span
+        class="badge position-absolute top-0 end-0 m-2 fs-6 fw-bold"
+        [ngStyle]="
+          item.discountPercentage > 10
+            ? { 'background-color': 'red', color: 'black' }
+            : { 'background-color': 'green', color: 'white' }
+        "
+        >{{ item.discountPercentage }}</span
+      > -->
 
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp" class="card-img-top" alt="iPhone X">
-      <div class="card-body">
-        <h5 class="card-title">iPhone X</h5>
-        <p class="card-text">Stylish and sleek design with top-notch features. It comes with facial recognition and OLED display.</p>
-      </div>
-    </div>
-  </div>
+      @if (item.discountPercentage > 10) {
+      <span
+        class="badge position-absolute top-0 end-0 m-2 fs-6 fw-bold"
+        [ngStyle]="{ 'background-color': 'gold', color: 'black' }"
+        >Hot Offer</span
+      >
+      }
 
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp" class="card-img-top" alt="Samsung Universe 9">
+      <img [src]="item.thumbnail" class="card-img-top" alt="{{ item.title }}" />
       <div class="card-body">
-        <h5 class="card-title">Samsung Universe 9</h5>
-        <p class="card-text">Latest Android phone by Samsung with an amazing camera and AMOLED display. Packed with features.</p>
-      </div>
-    </div>
-  </div>
+        <h5 class="card-title">{{ item.title }}</h5>
+        <h3>
+          <span
+            class="badge"
+            [ngClass]="item.category == 'beauty' ? 'text-bg-danger' : ''"
+            >{{ item.category }}</span
+          >
+        </h3>
 
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp" class="card-img-top" alt="OPPOF19">
-      <div class="card-body">
-        <h5 class="card-title">OPPOF19</h5>
-        <p class="card-text">Sleek and light Android phone with a powerful battery and stunning display for entertainment lovers.</p>
+        <p class="card-text" [ngClass]="'mycls'">{{ item.description }}</p>
       </div>
     </div>
   </div>
-
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp" class="card-img-top" alt="Huawei P30">
-      <div class="card-body">
-        <h5 class="card-title">Huawei P30</h5>
-        <p class="card-text">Photography redefined with Huawei’s flagship camera phone. A true masterpiece for camera lovers.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp" class="card-img-top" alt="MacBook Pro">
-      <div class="card-body">
-        <h5 class="card-title">MacBook Pro</h5>
-        <p class="card-text">Apple’s most powerful notebook with the M1 chip for exceptional performance and battery life.</p>
-      </div>
-    </div>
-  </div>
+  }
 </div>

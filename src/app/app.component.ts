@@ -6,7 +6,7 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 // decorator
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent,MovieListComponent],
+  imports: [NavbarComponent,MovieListComponent,ProductsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

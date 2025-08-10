@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 export class MovieListComponent {
   searchValue = '';
   userRate = 0;
+  // MovList:any[]=[]
   MovList = [
     {
       adult: false,
