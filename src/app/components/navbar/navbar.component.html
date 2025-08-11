@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">SToRe</a>
+    <a class="navbar-brand" routerLink="/">SToRe</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -15,13 +15,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" routerLink="/products" routerLinkActive="activeLink">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Products</a>
+          <a class="nav-link" routerLink="/movies" routerLinkActive="activeLink" >Movies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">AboutUs</a>
+          <a class="nav-link" routerLink="/about" routerLinkActive="activeLink" >AboutUs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="activeLink" >ContactUs</a>
         </li>
       </ul>
     </div>

@@ -1,7 +1,7 @@
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
   <input type="text" class="form-control" [(ngModel)]="searchValue" />
   <!-- <h2>{{searchValue}}</h2> -->
-  @for (movie of MovList; track $index) {
+  @for (movie of listOfMovies; track $index) {
   <div class="col">
     <div class="card h-100 position-relative">
       <app-movie-rating (myCasting)="reciveChildData($event)"

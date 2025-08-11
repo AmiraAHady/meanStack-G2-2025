@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
-import { ProductsComponent } from './components/products/products.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { MovieListComponent } from './components/movie-list/movie-list.component';
-// metadata 
+import { RouterOutlet } from '@angular/router';
+// metadata
 // decorator
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent,MovieListComponent,ProductsComponent],
+  imports: [NavbarComponent, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
-
 export class AppComponent {
   // entry point
   title = 'meanG2';
