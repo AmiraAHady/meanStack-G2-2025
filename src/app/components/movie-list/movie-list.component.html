@@ -1,37 +1,22 @@
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
-  <input type="text" class="form-control" [(ngModel)]="searchValue" />
-  <!-- <h2>{{searchValue}}</h2> -->
   @for (movie of listOfMovies; track $index) {
-  <div class="col">
-    <div class="card h-100 position-relative">
-      <app-movie-rating (myCasting)="reciveChildData($event)"
-        [myParentRating]="movie.vote_average"
-      ></app-movie-rating>
-   
-      <!-- conditional Rendering -->
-      <!-- @if (movie.vote_average >=7) {
-      <span
-        class="badge bg-warning text-dark position-absolute top-0 end-0 m-2 fs-6 fw-bold"
-        >Top Rated</span
-      >
-      }@else {
-        <span
-        class="badge bg-info text-dark position-absolute top-0 end-0 m-2 fs-6 fw-bold"
-        >{{movie.vote_average.toFixed(1)}}</span
-      >
-      } -->
-      <img
-        src="{{ 'https://image.tmdb.org/t/p/w500' + movie.poster_path }}"
-        class="card-img-top"
-        alt="iPhone 9"
-      />
-      <div class="card-body">
-        <h5 class="card-title">{{ movie.title }}</h5>
-        <h4>Release Date:{{ movie.release_date | date : "fullDate" }}</h4>
-        <!-- child -->
+  <a [routerLink]="['/details', movie.id]">
+    <div class="col">
+      <div class="card h-100 position-relative">
+        <app-movie-rating
+          [myParentRating]="movie.vote_average"
+        ></app-movie-rating>
+        <img
+          src="{{ 'https://image.tmdb.org/t/p/w500' + movie.poster_path }}"
+          class="card-img-top"
+          alt="iPhone 9"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ movie.title }}</h5>
+        </div>
       </div>
     </div>
-  </div>
+  </a>
   }@empty {
   <h1>No Movies Founded!</h1>
   }

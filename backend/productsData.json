@@ -1,0 +1,53 @@
+[
+    {
+      "id": 1,
+      "title": "Wireless Bluetooth Headphones",
+      "description": "Over-ear, noise-cancelling, 30 hours battery life",
+      "price": 59.99,
+      "brand": "SoundMax",
+      "category": "Electronics",
+      "rating": 4.5,
+      "image": "https://via.placeholder.com/300x200?text=Headphones"
+    },
+    {
+      "id": 2,
+      "title": "Smartphone 6.5\" AMOLED",
+      "description": "128GB storage, 6GB RAM, dual camera",
+      "price": 399.00,
+      "brand": "TechOne",
+      "category": "Mobiles",
+      "rating": 4.2,
+      "image": "https://via.placeholder.com/300x200?text=Smartphone"
+    },
+    {
+      "id": 3,
+      "title": "Gaming Laptop",
+      "description": "Intel i7, 16GB RAM, RTX 3060 GPU, 512GB SSD",
+      "price": 1199.99,
+      "brand": "GamePro",
+      "category": "Computers",
+      "rating": 4.7,
+      "image": "https://via.placeholder.com/300x200?text=Gaming+Laptop"
+    },
+    {
+      "id": 4,
+      "title": "Sports Running Shoes",
+      "description": "Breathable mesh, lightweight, non-slip sole",
+      "price": 79.50,
+      "brand": "RunFast",
+      "category": "Footwear",
+      "rating": 4.3,
+      "image": "https://via.placeholder.com/300x200?text=Running+Shoes"
+    },
+    {
+      "id": 5,
+      "title": "Coffee Maker",
+      "description": "12-cup capacity, programmable timer, auto shut-off",
+      "price": 45.00,
+      "brand": "BrewMaster",
+      "category": "Home Appliances",
+      "rating": 4.0,
+      "image": "https://via.placeholder.com/300x200?text=Coffee+Maker"
+    }
+  ]
+  

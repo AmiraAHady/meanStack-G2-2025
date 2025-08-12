@@ -6,13 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MoviesService {
-  // httpClient(built-in service)
+  apiKey = '0ab69d58b9382bc390a939b7dbbe713b';
   constructor(private http: HttpClient) {}
-  // observable
-  // Async
   getAllMovies(): Observable<any> {
     return this.http.get<any>(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=Your_api_key&page=2`
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}`
+    );
+  }
+
+  getMovieById(id: string):Observable<any> {
+    return this.http.get<any>(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${this.apiKey}`
     );
   }
 }

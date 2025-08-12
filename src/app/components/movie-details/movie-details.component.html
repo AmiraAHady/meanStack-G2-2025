@@ -1,1 +1,61 @@
-<p>movie-details works!</p>
+@if (selectedMovie) {
+<div class="row g-4 mt-1">
+  <!-- Poster -->
+  <div class="col-md-4 text-center">
+    <img
+      src="{{ 'https://image.tmdb.org/t/p/w500' + selectedMovie.poster_path }}"
+      class="img-fluid rounded shadow"
+      alt="Movie Poster"
+    />
+  </div>
+
+  <!-- Info -->
+  <div class="col-md-8">
+    <h1 class="fw-bold mb-2">
+      {{ selectedMovie.title }}
+      <span class="text-muted"
+        >({{ selectedMovie.release_date | date : "yyy" }})</span
+      >
+    </h1>
+
+    <!-- Rating -->
+    <div class="d-flex align-items-center mb-3 flex-wrap">
+      <span class="badge bg-success me-2 mb-2"
+        >{{ selectedMovie.vote_average.toFixed(1) }} ★</span
+      >
+    </div>
+
+    <!-- Genres -->
+    <div class="mb-3">
+      @for (item of selectedMovie.genres; track $index) {
+      <span class="badge bg-secondary me-1">{{ item.name }}</span>
+      }
+    </div>
+
+    <!-- Overview -->
+    <h5 class="fw-bold">Overview</h5>
+    <p class="lead">{{ selectedMovie.overview }}</p>
+
+    <!-- Extra Details -->
+    <ul class="list-group list-group-flush mb-3">
+      <li class="list-group-item">
+        <strong>Release Date:</strong> {{ selectedMovie.release_date | date }}
+      </li>
+      <li class="list-group-item">
+        <strong>Runtime:</strong> {{ selectedMovie.runtime }}
+      </li>
+      <li class="list-group-item">
+        <strong>Budget:</strong> {{ selectedMovie.budget | currency }}
+      </li>
+      <li class="list-group-item">
+        <strong>Revenue:</strong> {{ selectedMovie.revenue | currency }}
+      </li>
+    </ul>
+
+    <button class="btn btn-primary">Watch Trailer</button>
+  </div>
+</div>
+
+}@else {
+<h1>No Movie Founded with this id</h1>
+}
