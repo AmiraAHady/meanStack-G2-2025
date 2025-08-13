@@ -1,58 +1,86 @@
-// import fileSys from 'fs';
-// const fileSys = require("fs");
-const http = require("http");
 let products = require("./productsData.json");
-//req->Request
-//res->Response
-// menu=APIs=EndPoints
-// path,method
-// /products ,GET
-// /product/1 ,GET
-// task
-// update,delete
+const express = require("express");
+const server = express(); //server=creatServer
 
-const server = http.createServer((req, res) => {
-  if (req.url == "/products" && req.method == "GET") {
-    res.end(JSON.stringify(products));
-  } else if (req.method == "GET" && req.url.startsWith("/product/")) {
-    let id = +req.url.split("/")[2];
-    let product = products.find((item) => item.id == id);
-    if (product) {
-      res.end(JSON.stringify(product));
-    } else {
-      res.end("No Product Founded With this id");
-    }
-  } else if (req.method == "POST" && req.url == "/addProduct") {
-    // chuncks
-    let reqBody = "";
-    req.on("data", (chunck) => {
-      reqBody += chunck;
-    });
+// task make apis that match:
+// ->update single product
+// ->update all products with category==Mobiles make them Electronics (from Mobiles to Electronics)
+// ->delete all products
 
-    req.on("end", () => {
-      let newProduct = JSON.parse(reqBody);
-      newProduct.id = products.length + 1;
-      console.log(newProduct);
-      products.push(newProduct);
-      res.end(`Product add Successfully : ${newProduct.id}`);
-    });
+
+
+// middleware
+// next->forward
+server.use(express.json());
+
+// first match wins
+// APIs->EndPoints
+// /products,GET
+server.get("/", (req, res) => {
+  res.send(products);
+});
+// server.get("/", (req, res) => {
+//   let category = req.query.category;
+//   if (category) {
+//     let result = products.filter((product) => product.category == category);
+//     res.send(result);
+//   } else {
+//     res.send(products);
+//   }
+// });
+// Query string
+// category=Mobiles
+// ?key=value&key=value
+// http://localhost:3000/products?category=Mobiles$minPrice=1000
+server.get("/products", (req, res) => {
+  let result = products;
+  let category = req.query.category;
+  let minPrice = +req.query.minPrice;
+  if (category) {
+    result = products.filter((product) => product.category == category);
+  }
+  if (minPrice) {
+    result = result.filter((product) => product.price >= minPrice);
+  }
+
+  res.send(result);
+});
+
+// /products/id ,GET
+// Query params
+server.get("/products/:id", (req, res) => {
+  console.log(req.params);
+  let id = +req.params.id;
+  let product = products.find((prod) => prod.id == id);
+  if (product) {
+    res.send(product);
+  } else {
+    res.send(`No Product Founded with this id :${req.params.id}`);
   }
 });
 
-//localhost,portNumber
-
-server.listen(3000, () => {
-  console.log("Server Connected");
+// /addproduct  POST
+// body ->data
+// create
+//
+server.post("/addproduct", (req, res) => {
+  let newProduct = req.body;
+  newProduct.id = products.length + 1;
+  products.push(newProduct);
+  res.send("product added successfully");
 });
 
-// fileSys.readFile("task.txt", (err, data) => {
-//   if (err) throw err;
-//   console.log(data.toString());
-// });
+// delete product ,id
+server.delete("/delete/:id", (req, res) => {
+  let id = +req.params.id;
+  let result = products.findIndex((prod) => prod.id == id);
+  if (result == -1) {
+    res.send(`No Product Founded with this id :${req.params.id}`);
+  }
+  products = products.filter((product) => product.id != id);
+  res.send({ message: "Product deleted successfully", productList: products });
+});
 
-// let data = `hello from Node js
-// this is dummy text`;
-// fileSys.writeFile("task2.txt", data, (err) => {
-//   if (err) throw err;
-//   console.log("The file has been saved!");
-// });
+server.listen(3000, () => {
+  console.log("server connected");
+});

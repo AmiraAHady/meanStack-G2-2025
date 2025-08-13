@@ -13,10 +13,30 @@
       "id": 2,
       "title": "Smartphone 6.5\" AMOLED",
       "description": "128GB storage, 6GB RAM, dual camera",
-      "price": 399.00,
+      "price": 300,
       "brand": "TechOne",
       "category": "Mobiles",
       "rating": 4.2,
+      "image": "https://via.placeholder.com/300x200?text=Smartphone"
+    },
+    {
+      "id": 7,
+      "title": "IPhone 15 promax",
+      "description": "128GB storage, 6GB RAM, dual camera",
+      "price": 1200,
+      "brand": "Apple",
+      "category": "Mobiles",
+      "rating": 5.3,
+      "image": "https://via.placeholder.com/300x200?text=Smartphone"
+    },
+    {
+      "id": 8,
+      "title": "IPhone 16 promax",
+      "description": "64 GB storage",
+      "price": 1500,
+      "brand": "Apple",
+      "category": "Mobiles",
+      "rating": 5.3,
       "image": "https://via.placeholder.com/300x200?text=Smartphone"
     },
     {
