@@ -10,25 +10,19 @@
       >
       }
 
-      <img [src]="item.thumbnail" class="card-img-top" alt="{{ item.title }}" />
+      <img [src]="item.image" class="card-img-top" alt="{{ item.title }}" />
       <div class="card-body">
-        <h5 class="card-title">{{ item.title}}</h5>
-        <h5 class="card-title">{{ item.price |currency:'EUR':'symbol'}}</h5>
+        <h5 class="card-title">{{ item.title }}</h5>
+        <h5 class="card-title">
+          {{ item.price | currency : "EUR" : "symbol" }}
+        </h5>
         <h3>
-          <span
-            class="badge"
-            [ngClass]="item.category == 'beauty' ? 'text-bg-danger' : 'mycls'"
-            >{{ item.category }}</span
-          >
+          <span class="badge">{{ item.category }}</span>
         </h3>
 
         <p class="card-text" [ngClass]="'mycls'">{{ item.description }}</p>
-        <!-- <button class="btn btn-warning mx-1">Edit</button>
-        <button class="btn btn-danger">Delete</button> -->
       </div>
     </div>
   </div>
   }
-
- 
 </div>
